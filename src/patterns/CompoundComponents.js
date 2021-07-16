@@ -1,6 +1,3 @@
-// Compound Components
-// http://localhost:3000/isolated/exercise/02.js
-
 import * as React from 'react'
 import {Switch} from '../switch'
 
@@ -10,15 +7,10 @@ function Toggle({children}) {
 
   return React.Children.map(children, child => {
     // This is how to share implicit state
-
-    if (typeof child.type === 'function') {
-      return React.cloneElement(child, {
-        on,
-        toggle,
-      })
-    }
-
-    return child
+    return React.cloneElement(child, {
+      on,
+      toggle,
+    })
   })
 }
 
@@ -32,17 +24,11 @@ function App() {
     <div>
       <Toggle>
         <ToggleOn>The button is on</ToggleOn>
-        <ToggleOff>The button is off</ToggleOff>
-        <span>Hello</span>
         <ToggleButton />
+        <ToggleOff>The button is off</ToggleOff>
       </Toggle>
     </div>
   )
 }
 
 export default App
-
-/*
-eslint
-  no-unused-vars: "off",
-*/
